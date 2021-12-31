@@ -3,7 +3,7 @@ import { Achievements } from './interfaces/achievements';
 import { Experiences } from './interfaces/experiences';
 import { Person } from './interfaces/person';
 import { Skills } from './interfaces/skills';
-import { COMMA, ENTER } from '@angular/cdk/keycodes';
+import { COMMA, ENTER, P } from '@angular/cdk/keycodes';
 import { MatChipInputEvent } from '@angular/material/chips';
 import { FormGroup, FormBuilder, Validators, FormArray } from '@angular/forms';
 
@@ -13,6 +13,7 @@ import { FormGroup, FormBuilder, Validators, FormArray } from '@angular/forms';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent implements OnInit {
+  url='';
   title = 'CV';
   person?: Person;
   experiences?: Experiences[];
@@ -24,6 +25,7 @@ export class AppComponent implements OnInit {
   constructor(private fb: FormBuilder) {}
 
   ngOnInit(): void {
+    this.url ='./assets/image.png'
     this.initializeForm();
   }
 
@@ -47,11 +49,21 @@ export class AppComponent implements OnInit {
       address: this.cvForm.value.address,
       education: this.cvForm.value.education,
       experiences: this.cvForm.value.experiences,
-      skills: this.skills
+      skills: this.skills,
+      url: this.url
     };
     console.log(CV);
   }
+  onImageSelected(event:any) {
+    if (event.target.files) {
+      var reader = new FileReader();
+      reader.readAsDataURL(event.target.files[0]);
+      reader.onload = (e:any) => {
+        this.url = e.target.result;
+      }
+    }
 
+  }
   createEducation(): FormGroup {
     return this.fb.group({
       domain: [],
