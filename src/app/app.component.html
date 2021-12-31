@@ -10,40 +10,43 @@
     <div class="form-header">
       <h2>Informatii personale</h2>
     </div>
-    <div class="form-cv">
+    <div formGroupName="personal">
 
-      <mat-form-field appearance="outline">
-        <mat-label>Prenume</mat-label>
-        <input matInput formControlName="firstName" placeholder="ex: Ionut">
-      </mat-form-field>
+      <div class="form-cv" >
 
-      <mat-form-field appearance="outline">
-        <mat-label>Nume</mat-label>
-        <input matInput formControlName="lastName" placeholder="ex: Popescu">
-      </mat-form-field>
-      <mat-form-field appearance="outline">
-        <mat-label>Data nasterii</mat-label>
-        <input matInput formControlName="dateOfBirth" type="date" placeholder="">
-      </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Prenume</mat-label>
+          <input matInput formControlName="firstName" placeholder="ex: Ionut">
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Nume</mat-label>
+          <input matInput formControlName="lastName" placeholder="ex: Popescu">
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Data nasterii</mat-label>
+          <input matInput formControlName="dateOfBirth" type="date" placeholder="">
+        </mat-form-field>
+      </div>
+      <div class="form-cv">
+        <mat-form-field appearance="outline">
+          <mat-label>Telefon</mat-label>
+          <input matInput formControlName="phone" placeholder="">
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Adresa</mat-label>
+          <input matInput formControlName="address" placeholder="">
+        </mat-form-field>
+
+
+      </div>
     </div>
-    <div class="form-cv">
-      <mat-form-field appearance="outline">
-        <mat-label>Telefon</mat-label>
-        <input matInput formControlName="phone" placeholder="">
-      </mat-form-field>
-      <mat-form-field appearance="outline">
-        <mat-label>Adresa</mat-label>
-        <input matInput formControlName="address" placeholder="">
-      </mat-form-field>
+      <mat-divider></mat-divider>
 
-
-    </div>
-    <mat-divider></mat-divider>
-
-    <div class="form-header-button">
-      <h2>Educatie</h2>
-      <button mat-button color="accent" (click)=addNextEducation()>
-        <h4>Adauga campuri educatie</h4>
+      <div class="form-header-button">
+        <h2>Educatie</h2>
+        <button mat-button color="accent" (click)=addNextEducation()>
+          <h4>Adauga campuri educatie</h4>
       </button>
     </div>
     <div formArrayName="education"
