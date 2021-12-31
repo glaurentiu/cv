@@ -41,6 +41,12 @@ export class AppComponent implements OnInit {
     this.initializeForm();
   }
 
+  saveButton(submitBtn:any){
+    this.clicked=true;
+     return submitBtn.click()
+
+  }
+
   initializeForm(): void {
     this.cvForm = this.fb.group({
       personal : this.createPersonal(),
@@ -56,7 +62,7 @@ export class AppComponent implements OnInit {
       skills: this.skills,
       url: this.url,
     };
-    console.log(this.CV);
+    console.log('acest cv',this.CV);
 
   }
   onImageSelected(event: any) {
@@ -134,9 +140,9 @@ export class AppComponent implements OnInit {
     const doc = documentCreator.create([
       this.CV.personal,
       this.CV.experiences,
-      this.CV.skills,
       this.CV.education,
-      this.CV.url,
+      this.CV.skills,
+      this.CV.url
     ]);
 
     Packer.toBlob(doc).then((blob) => {
