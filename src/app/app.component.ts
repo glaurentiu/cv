@@ -5,7 +5,7 @@ import { Person } from './interfaces/person';
 import { Skills } from './interfaces/skills';
 import { COMMA, ENTER } from '@angular/cdk/keycodes';
 import { MatChipInputEvent } from '@angular/material/chips';
-import { FormGroup, FormBuilder, Validators , FormArray} from '@angular/forms';
+import { FormGroup, FormBuilder, Validators, FormArray } from '@angular/forms';
 
 @Component({
   selector: 'app-root',
@@ -24,10 +24,10 @@ export class AppComponent implements OnInit {
   constructor(private fb: FormBuilder) {}
 
   ngOnInit(): void {
-      this.initializeForm();
+    this.initializeForm();
   }
 
-  initializeForm():void {
+  initializeForm(): void {
     this.cvForm = this.fb.group({
       firstName: '',
       lastName: '',
@@ -35,14 +35,10 @@ export class AppComponent implements OnInit {
       phone: '',
       address: '',
       education: this.fb.array([this.createEducation()]),
-      experiences: [],
-      skills: []
-
-
-    })
-
+      experiences: this.fb.array([this.createExperiences()]),
+    });
   }
-  onSubmit(){
+  onSubmit() {
     const CV = {
       firstName: this.cvForm.value.firstName,
       lastName: this.cvForm.value.lastName,
@@ -51,9 +47,9 @@ export class AppComponent implements OnInit {
       address: this.cvForm.value.address,
       education: this.cvForm.value.education,
       experiences: this.cvForm.value.experiences,
-      skills: this.cvForm.value.skills,
-    }
-    console.log(CV)
+      skills: this.skills
+    };
+    console.log(CV);
   }
 
   createEducation(): FormGroup {
@@ -62,13 +58,26 @@ export class AppComponent implements OnInit {
       degree: [],
       schoolName: [],
       startYear: [],
-      endYear: []
-    })
+      endYear: [],
+    });
   }
   addNextEducation(): void {
-   (this.cvForm.get('education') as FormArray).push(this.createEducation())
+    (this.cvForm.get('education') as FormArray).push(this.createEducation());
   }
-  getControls(name:string) {
+
+  createExperiences(): FormGroup {
+    return this.fb.group({
+      jobTitle: [],
+      company: [],
+      description: [],
+      startYear: [],
+      endYear: [],
+    });
+  }
+  addNextExperience(): void {
+    (this.cvForm.get('experiences') as FormArray).push(this.createExperiences());
+  }
+  getControls(name: string) {
     return (this.cvForm.get(`${name}`) as FormArray).controls;
   }
 

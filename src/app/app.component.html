@@ -78,58 +78,55 @@
 
   </div>
 </div>
-  <div class="form-button">
-
-
-  </div>
 </div>
 <mat-divider></mat-divider>
 
 <div class="form-header-button">
   <h2>Experienta</h2>
-  <button mat-button color="accent">
+  <button mat-button color="accent" (click)="addNextExperience()">
     <h4>Adauga campuri experienta</h4>
   </button>
 </div>
+<div formArrayName="experiences"
+      *ngFor="let item of getControls('experiences'); let i=index;">
+<div [formGroupName]='i'>
+
+  <div class="form-cv">
+
+    <mat-form-field appearance="outline">
+      <mat-label>Titlu job</mat-label>
+      <input matInput formControlName="jobTitle" placeholder="">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Angajator</mat-label>
+      <input matInput formControlName="company" placeholder="">
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Descriere</mat-label>
+      <input matInput formControlName="description" placeholder="">
+    </mat-form-field>
+  </div>
+
+  <div class="form-cv">
+    <mat-form-field appearance="outline">
+      <mat-label>Inceput (anul)</mat-label>
+      <input matInput formControlName="startYear" placeholder="">
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Sfarsit(anul / prezent)</mat-label>
+      <input matInput formControlName="endYear" placeholder="">
+    </mat-form-field>
+
+  </div>
+</div>
+</div>
+<mat-divider></mat-divider>
+
+<div class="form-header">
+  <h2>Skills</h2>
+</div>
 <div class="form-cv">
-
-  <mat-form-field appearance="outline">
-    <mat-label>Titlu job</mat-label>
-    <input matInput placeholder="">
-      </mat-form-field>
-
-      <mat-form-field appearance="outline">
-        <mat-label>Angajator</mat-label>
-        <input matInput placeholder="">
-      </mat-form-field>
-      <mat-form-field appearance="outline">
-        <mat-label>Descriere</mat-label>
-        <input matInput placeholder="">
-      </mat-form-field>
-    </div>
-
-    <div class="form-cv">
-      <mat-form-field appearance="outline">
-        <mat-label>Inceput (anul)</mat-label>
-        <input matInput placeholder="">
-      </mat-form-field>
-      <mat-form-field appearance="outline">
-        <mat-label>Sfarsit(anul)</mat-label>
-        <input matInput placeholder="">
-        <mat-checkbox>In curs</mat-checkbox>
-      </mat-form-field>
-
-    </div>
-    <div class="form-button">
-
-
-    </div>
-    <mat-divider></mat-divider>
-
-    <div class="form-header">
-      <h2>Skills</h2>
-    </div>
-    <div class="form-cv">
 
       <mat-form-field class="skills" appearance="outline">
 
