@@ -150,10 +150,16 @@
     </div>
 
     <mat-divider></mat-divider>
-    <div class="form-button">
-      <button mat-raised-button type="submit" color="accent">
-        <h1>Descarca CV</h1>
+    <div class="form-button" *ngIf=!clicked>
+      <button mat-raised-button type="submit" color="accent" (click)="clicked=true">
+        <h1>Salveaza</h1>
       </button>
+
+    </div>
+      <div class="form-button" *ngIf=clicked>
+        <button mat-raised-button  color="accent" (click)="download()">
+          <h1>Descarca CV</h1>
+        </button>
 
     </div>
   </form>

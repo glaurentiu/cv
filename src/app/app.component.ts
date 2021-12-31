@@ -17,6 +17,7 @@ import { Education } from './interfaces/education';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent implements OnInit {
+  clicked = false;
   url = '';
   title = 'CV';
   person?: Person;
