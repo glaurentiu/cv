@@ -77,6 +77,8 @@ export class DocumentCreator {
                   return arr;
                 })
                 .reduce((prev:any, curr:any) => prev.concat(curr), []),
+                this.createHeading("Skills"),
+                this.createSkillList(skills),
           ],
         },
       ],
@@ -146,6 +148,10 @@ export class DocumentCreator {
   ): string {
     return `${startDate} - ${endDate}`;
   }
-
+  public createSkillList(skills: any[]): Paragraph {
+    return new Paragraph({
+      children: [new TextRun(skills.map(skill => skill.skill).join(", ") + ".")]
+    });
+  }
 
 }
