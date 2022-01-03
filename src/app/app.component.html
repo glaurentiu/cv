@@ -4,8 +4,8 @@
 <div class="content" role="main">
 
 
-  <input style="display: none" type="file" (change)="onImageSelected($event)" #imgInput>
-  <img [src]="url" width="150" height="150" (click)="imgInput.click()">
+  <!-- <input style="display: none" type="file" (change)="onImageSelected($event)" #imgInput>
+  <img [src]="url" width="150" height="150" (click)="imgInput.click()"> -->
   <form [formGroup]="cvForm" (ngSubmit)="onSubmit()">
     <div class="form-header">
       <h2>Informatii personale</h2>
